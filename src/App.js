@@ -1,26 +1,26 @@
-import logo from "./logo.svg";
 import "./App.css";
-// import gql from "fake-tag";
-
 import {
   ApolloClient,
   InMemoryCache,
-  ApolloProvider,
   useQuery,
   gql,
 } from "@apollo/client";
 
+
+
 export const SPACE_MISSION_URL = "https://api.spacex.land/graphql/";
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
   uri: SPACE_MISSION_URL,
   cache: new InMemoryCache(),
 });
 
-const MISSION_QUERY = `
+
+
+const MISSION_QUERY = gql`
 {
-  launches {
-    mission_name
+  missions {
+    name
   }
 }`;
 
@@ -51,29 +51,19 @@ client
     (result) => console.log(result) // callback function
   );
 
-//This already runs the first
-function App() {
-  // move the client call here to force rerender of the app with the network response:
-  // www.apollographql.com/docs/react/get-started/ OR Use the traditional React way to call an backend API
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+function App() {
+  
+  const { loading, error, data } = useQuery(MISSION_QUERY);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  return data.missions.map((mission, i) => (
+    <div key={i}>
+      {mission.name}
     </div>
-  );
+  ));
 }
 
 export default App;
