@@ -5,6 +5,7 @@ import {
   useQuery,
   gql,
 } from "@apollo/client";
+import About from "./About";
 
 
 
@@ -24,22 +25,7 @@ const MISSION_QUERY = gql`
   }
 }`;
 
-/**
- * query response from the GraphQL Endpoint: https://api.spacex.land/graphql/
- {
-  "data": {
-    "launches": [
-      {
-        "mission_name": "Thaicom 6"
-      },
-      {
-        "mission_name": "AsiaSat 6"
-      },
-*/
 
-// const client = ...
-
-// Start the network call
 client
   .query({
     query: gql`
@@ -53,7 +39,6 @@ client
 
 
 function App() {
-  
   const { loading, error, data } = useQuery(MISSION_QUERY);
 
   if (loading) return <p>Loading...</p>;
@@ -62,6 +47,7 @@ function App() {
   return data.missions.map((mission, i) => (
     <div key={i}>
       {mission.name}
+      <About />
     </div>
   ));
 }
