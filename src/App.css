@@ -1,38 +1,217 @@
-.App {
-  text-align: center;
+.dark{
+  background:rgb(0, 0, 0);
+}
+.dark .outta {
+  background:black;
+}
+.dark .outta ul li a{
+  color:white;
+}
+.dark .sc-iqAclL .active{
+  background:white;
+}
+.dark .sc-iqAclL .active:after{
+  background:white;
+}
+.dark .sc-pNWdM{
+  background:black;
+}
+.dark div p,.dark div h3,
+.dark div span,.dark div p,
+.dark div a,.dark footer ul li a{
+  color:#ffffff;
+}
+.dark footer{
+  border-top:1px solid white;
+}
+.dark h2{
+  color:#969696;
+}
+.dark form input,
+.dark form textarea{
+  color:rgb(255, 255, 255);
+  background:rgb(0, 0, 0);
+  border-bottom:1px solid white;
+}
+.dark form input::placeholder,
+.dark form textarea::placeholder{
+  color:white;
+}
+.dark form button{
+  background:white;
+  color:black;
+}
+.dark .sc-giAqHp {
+  background:white;
+}
+.dark .sc-giAqHp p{
+   color:black !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.light{
+  background:rgb(255, 255, 255);
+}
+.light .outta {
+  background:rgb(255, 255, 255);
+}
+.light .outta ul li a{
+  color:rgb(0, 0, 0);
+}
+.light .sc-iqAclL .active{
+  background:rgb(0, 0, 0);
+}
+.light .sc-iqAclL .active:after{
+  background:rgb(0, 0, 0);
+}
+.light .sc-pNWdM{
+  background:rgb(255, 255, 255);
+}
+.light div p,.light div h3,
+.light div span,.light div p,
+.light div a,.light footer ul li a{
+  color:#3a3a3a;
+}
+.light footer{
+  background:#f5f5f5;
+  border:none;
+  
+}
+.light h2{
+  color:#3A3A3A;
+}
+.light form input,
+.light form textarea{
+  color:black;
+  background:white;
+  border-bottom:1px solid black;
+}
+.light form input::placeholder,
+.light form textarea::placeholder{
+  color:rgb(0, 0, 0);
+}
+.light form button{
+  background:rgb(0, 0, 0);
+  color:rgb(255, 255, 255);
+}
+.light .sc-giAqHp{
+  background:black;
+}
+.light .sc-giAqHp p{
+  color:white !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+
+
+.slick-slider .slick-dots li button:before{
+  font-size:50px !important;
+  background:black;
+  border-radius:10px;
+  position:relative;
+  z-index:5;
+  content:'' !important;
+  height:23px;
+  width:23px;
+  background:black;
+}
+
+.slick-slider .slick-dots .slick-active button:before{
+  width:73px !important;
+  
+}
+
+.slick-slider .slick-dots{
+  width: max-content;
+  position:relative;
+  left:10%;
+  margin-top:35px;
+}
+
+.slick-slider .slick-dots li{
+  width:unset;
+  height:unset;
+  height:15px;
+  transition:00.7s;
+  transform:translateY(-30px);
+  margin:0 2px;
+}
+.dark .slick-slider .slick-dots li button{
+  background:#ffffff;
+  transition:0.7s;
+  border-radius:10px;
+  height: 4px;
+  width:16px;
+  
+}
+.dark .slick-slider .slick-dots .slick-active button{
+  background:#ffffff;
+  width:35px;
+  
+}
+.dark .slick-slider .slick-slide .sc-cBoqAE{
+  
+  border-bottom:3px solid #ffffff;
+}
+.light .slick-slider .slick-dots li button{
+  background:#3a3a3a;
+  transition:0.7s;
+  border-radius:10px;
+  height: 4px;
+  width:16px;
+  
+}
+.light .slick-slider .slick-dots .slick-active button{
+  background:#3a3a3a;
+  width:35px;
+  
+}
+.light .slick-slider .slick-slide .sc-cBoqAE{
+  
+  border-bottom:3px solid #3a3a3a;
+}
+
+@media(min-width:768px){
+  .slick-slider .slick-dots{
+      margin-top:-60px;
+      left:20%;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+
+.MuiFormControl-root{
+  width:100% !important;
+  margin-bottom:10px !important;
+}
+.dark .MuiInputLabel-formControl{
+  /* label */
+  text-transform: uppercase ;
+  color: rgb(255, 255, 255) !important;
+  font-size:15px !important;
+}
+.light .MuiInputLabel-formControl{
+  /* label */
+  text-transform: uppercase ;
+  color: black !important;
+  font-size:15px !important;
+}
+.dark .MuiInput-input{
+  /* input */
+  padding-bottom:30px !important;
+  border-bottom:1px solid white;
+}
+.light .MuiInput-input{
+  /* input */
+  padding-bottom:30px !important;
+}
+.dark .MuiInputBase-multiline{
+  padding-bottom: 0;
+}
+.gif{
+  width:100%;
+  height:100vh;
+  display:flex;
+  align-items:center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.gif img{
+  height:100px;
 }

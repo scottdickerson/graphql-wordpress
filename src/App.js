@@ -1,55 +1,117 @@
 import "./App.css";
+import React, {useState, useEffect} from 'react';
 import {
   ApolloClient,
   InMemoryCache,
   useQuery,
-  gql,
+  gql
 } from "@apollo/client";
-import About from "./About";
+import Loading from "./components/Loading";
+import Home from "./Home";
 
 
 
-export const SPACE_MISSION_URL = "https://api.spacex.land/graphql/";
+export const SERVER_URL = "http://localhost/react/graphql";
 
 export const client = new ApolloClient({
-  uri: SPACE_MISSION_URL,
+  uri: SERVER_URL,
   cache: new InMemoryCache(),
 });
 
 
-
-const MISSION_QUERY = gql`
-{
-  missions {
-    name
+export const DaasQuery = gql`{
+  page(id: "cG9zdDoxOA==") {
+    banner {
+      bannerParagraph
+      title
+      lightVideo{
+        mediaItemUrl
+      }
+      darkVideo {
+        mediaItemUrl
+      }
+      darkLogo {
+        sourceUrl
+      }
+      lightLogo {
+        sourceUrl
+      }
+    }
+    about {
+            aboutHeading
+            leftpBottom
+            leftpMiddle
+            leftpTop
+            name
+            rightp
+            aboutImage {
+              sourceUrl
+            }
+          }
+          datasets {
+      heading
+      dataCardNumFour
+      dataCardNumOne
+      dataCardNumThree
+      dataCardNumTwo
+      dataCardpFour
+      dataCardpHtree
+      dataCardpOne
+      dataCardpTwo
+      dataLeftBottom
+      dataLeftHeadBottom
+      dataLeftHeadTop
+    }
+    services {
+      heading
+      serviceHeadOne
+      serviceHeadThree
+      serviceHeadTwo
+      serviceP
+      servicePThree
+      servicePTwo
+    }
+        }
   }
-}`;
+`;
 
 
 client
   .query({
     query: gql`
-      ${MISSION_QUERY}
+      ${DaasQuery}
     `,
   })
   .then(
-    // once the network call finishes, this callback is called
-    (result) => console.log(result) // callback function
+    (result) => console.log(result) 
   );
 
 
 function App() {
-  const { loading, error, data } = useQuery(MISSION_QUERY);
+  const { loading, error } = useQuery(DaasQuery);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error :(</p>;
+  
+  const [dark, setDark] = useState();
 
-  return data.missions.map((mission, i) => (
-    <div key={i}>
-      {mission.name}
-      <About />
-    </div>
-  ));
+  useEffect(() => {
+    let hour = new Date().getHours();
+    if(hour < 6  || hour > 17){
+      setDark(true);
+    }else{
+      setDark(false);
+    }
+  }, [dark])
+
+  
+
+  if (loading) return <Loading />;
+  if (error) return <p>Error :</p>;
+
+  return (
+    <>
+    <Home dark={dark} />
+    </>
+ )
 }
 
 export default App;
